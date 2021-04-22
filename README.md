@@ -1,3 +1,4 @@
+<img src='imgs/BD_bot.png'><br>
 Welcome to Qlik-Slack Birthday bot
 We'll learn how to make bd bot with qlik and slack.
 
@@ -21,15 +22,15 @@ Lets assume we have some bds.xlsx on some fileshare with such structure of table
 | F           | I        | MM             | DD            | AD                         |
 |-------------|----------|----------------|---------------|----------------------------|
 | *Family name* | *Name*     |* Month of birth* | *Date of birth* | *AD login or Slack username* |
-| Baklanov    | Vladimir | 12             | 14            | somefancylogin             |
+| Clicky    | John | 12             | 14            | somefancylogin             |
 |             |          |                |               |                            |
 
 ## 2. Config webhook for slack 
 
-For this part we need to go to https://slack.com/apps/A0F7XDUAZ-incoming-webhooks and install this app to our slack space.
+For this part we need to go to [Incoming Webhooks](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks) and install this app to our slack space.
 1. Click `Add to slack`
 2. Choose channel to where you want it to post our messages
-3. For this manual we'll use `#slack_webhook_test`
+
 
 After this you'll get: <br id='URL'>
 1. URL like `https://hooks.slack.com/services/•••/•••/•••` (• will be numletters)  
