@@ -21,7 +21,7 @@ Lets assume we have some bds.xlsx on some fileshare with such structure of table
 
 | F           | I        | MM             | DD            | AD                         |
 |:-------------:|:----------:|:----------------:|:---------------:|:----------------------------:|
-| *Family name* | *Name*     |* Month of birth* | *Date of birth* | *AD login or Slack username* |
+| *Family name* | *Name*     |*Month of birth* | *Date of birth* | *AD login or Slack username* |
 | Clicky    | John | 12             | 14            | somefancylogin             |
 
 ---
