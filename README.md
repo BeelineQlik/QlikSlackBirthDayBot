@@ -7,7 +7,7 @@ We'll learn how to make bd bot with qlik and slack.
 <br>
 
 
-- [1. Birthdays file, .xlsx in this case, so anyone can add new lines there](#1-birthdays-file-xlsx-in-this-case-so-anyone-can-add-new-lines-there)
+- [1. Birthdays file](#1-birthdays-file)
 - [2. Config webhook for slack](#2-config-webhook-for-slack)
 - [3. Qlik REST API dummy connector](#3-qlik-rest-api-dummy-connector)
 - [4. Qlik application to shoot everyday for  🎉](#4-qlik-application-to-shoot-everyday-for--)
@@ -16,15 +16,15 @@ Lets go.🚀
 
 ---
 
-## 1. Birthdays file, .xlsx in this case, so anyone can add new lines there
+## 1. Birthdays file
 Lets assume we have some bds.xlsx on some fileshare with such structure of table\\
 
 | F           | I        | MM             | DD            | AD                         |
-|-------------|----------|----------------|---------------|----------------------------|
+|:-------------:|:----------:|:----------------:|:---------------:|:----------------------------:|
 | *Family name* | *Name*     |* Month of birth* | *Date of birth* | *AD login or Slack username* |
 | Clicky    | John | 12             | 14            | somefancylogin             |
-|             |          |                |               |                            |
 
+---
 ## 2. Config webhook for slack 
 
 For this part we need to go to [Incoming Webhooks](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks) and install this app to our slack space.
@@ -37,7 +37,9 @@ After this you'll get: <br id='URL'>
 2. Ability to customize logo
 3. Ability to name it desired way
 
-Done
+Done<br>
+
+----
 
 ## 3. Qlik REST API dummy connector
 
@@ -54,6 +56,8 @@ Go to your QlikHub and create empty app(you won't need this one)
   <img src = "imgs/rest_name.png" width = 300>
   <br>
 
+
+----
 ## 4. Qlik application to shoot everyday for  🎉
 
 Now, we need to create Qlik app with simple logic:
