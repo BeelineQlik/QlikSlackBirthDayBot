@@ -1,19 +1,18 @@
 Welcome to Qlik-Slack Birthday bot
-Today we'll learn how to make bd bot with qlik and slack.
+We'll learn how to make bd bot with qlik and slack.
 
->This bot was built on some researches on Qlik community site(share to link them)
+>This bot was built on some researches on Qlik community site(share to link them)<br>
+>TL;DR go to qvf folder for full code
+<br>
 
 
-
-- [>TL;DR go to qvf folder for full code](#tldr-go-to-qvf-folder-for-full-code)
 - [1. Birthdays file, .xlsx in this case, so anyone can add new lines there](#1-birthdays-file-xlsx-in-this-case-so-anyone-can-add-new-lines-there)
 - [2. Config webhook for slack](#2-config-webhook-for-slack)
 - [3. Qlik REST API dummy connector](#3-qlik-rest-api-dummy-connector)
 - [4. Qlik application to shoot everyday for  🎉](#4-qlik-application-to-shoot-everyday-for--)
-- [5.](#5)
 
 Lets go.🚀
->TL;DR go to qvf folder for full code
+
 ---
 
 ## 1. Birthdays file, .xlsx in this case, so anyone can add new lines there
@@ -69,12 +68,14 @@ Let's do this
 
 
 1. +2. reading excel with some variables for futher work
-```
+```json
 let bDD = num(Day(Today())); //todays Date
 let bMM = num(Month(Today())); // todays Month
 
+
+
 // excel loader
-[Лист1]: 
+[Sheet1]: 
 LOAD 
 	[F],
 	[I],
@@ -83,14 +84,14 @@ LOAD
 	[AD],
 	[DOMAIN],
     if (num('$(bDD)') = num([DD]) and num('$(bMM)') = num([MM]) , 1, 0) as is_BD //we'll need only valid rows
-from [lib://FOLDER_STG.MS-QSSRC001.BUSINESS_DASHBOARDS_DMP/UnifiedKPI/CDO_BD_AD.xlsx]
-(ooxml, embedded labels, table is [Лист1]);
+from [lib://•••.xlsx]
+(ooxml, embedded labels, table is [Sheet1]);
 
 Qualify *;
 NoConcatenate
 tmp: //put target rows somewhere to work with them later
 LOAD *
-Resident [Лист1]
+Resident [Sheet1]
 Where [is_BD] = 1;
 
 if NoOfRows('tmp') <> 0 then
@@ -112,7 +113,7 @@ let vBody =
 {
       "text": {
         "emoji": true,
-        "text": "С Днем Рождения, $(FFFF) $(IIII)",
+        "text": "Happy Birthday, $(FFFF) $(IIII)",
         "type": "plain_text"
       },
       "type": "header"
@@ -121,7 +122,7 @@ let vBody =
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": "Пусть все графики только :chart_with_upwards_trend: \n @$(ADAD)"
+        "text": "Only up! :chart_with_upwards_trend: \n @$(ADAD)"
         
       }
       
@@ -132,7 +133,7 @@ let vBody =
     {
       "elements": [
         {
-          "text": "ваша команда CDO.BI :qlik: \n #qlik_community / <•••.beeline.ru|•••.beeline.ru>",
+          "text": "your BI team :qlik: \n #qlik_community / <link>",
           "type": "mrkdwn"
         }
       ],
@@ -158,7 +159,7 @@ LET vBody = Replace(vBody,'\',chr(92));
 // Replace the * characters with the chr representations
 LET vBody = Replace(vBody,'*',chr(42));
 
-LIB CONNECT TO 'REST_SLACK_EOS (vimpelcom_main_seviskvortsov)';
+LIB CONNECT TO 'full connector name';
 
 RestConnectorMasterTable:
 SQL SELECT 
@@ -177,7 +178,10 @@ RESIDENT RestConnectorMasterTable;
 5. Wakey-wakey 
 
 * Go to /qmc 
-* 
+* go to apps
+* Choose your new app and create new reload task 
+  <br><img src = 'imgs/reload.png' width = 100px>
+* tune it to daily execution at desired time
 
 
-## 5.
+Done.
